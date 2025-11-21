@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topnav">
+    <a href="index.html" class="logo">Retro Games Hub</a>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">User Login</a>
+        <a href="register.html">Register</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+</header>
+
+<div class="game-details-container">
+
+    <div id="gameBox" class="game-box">
+        <!-- Content loads from script.js -->
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+/* Load selected game */
+(function loadGame(){
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"));
+
+    const box = document.getElementById("gameBox");
+    const games = JSON.parse(localStorage.getItem("games") || "[]");
+
+    const g = games.find(x => x.id === id);
+
+    if(!g){
+        box.innerHTML = "<h2>Game not found</h2>";
+        return;
+    }
+
+    box.innerHTML = `
+        <img src="${g.cover}" class="gd-img">
+        <h2>${g.title}</h2>
+        <p><strong>Category:</strong> ${g.category}</p>
+        <p><strong>Year:</strong> ${g.year}</p>
+        <p><strong>Downloads:</strong> ${g.downloads}</p>
+
+        <button class="dl-btn" onclick="downloadGame(${g.id})">
+            Download Game
+        </button>
+    `;
+})();
+
+/* Dummy download */
+function downloadGame(id){
+    alert("Downloading game ID: " + id + " (demo only)");
+}
+</script>
+
+</body>
+</html>
