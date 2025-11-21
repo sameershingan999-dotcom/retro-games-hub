@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topnav">
+    <a href="index.html" class="logo">Retro Games Hub</a>
+    <nav>
+        <a href="admin.html">Admin Login</a>
+        <a href="admin-register.html">Create Admin</a>
+        <a class="active" href="admins.html">Dashboard</a>
+        <a href="#" onclick="logoutAdmin()">Logout</a>
+    </nav>
+</header>
+
+<div class="dashboard-container">
+    <h2>Admin Dashboard</h2>
+    <p>All registered admins are listed below.</p>
+
+    <div id="adminsList" class="admin-list"></div>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+// Redirect if not logged in
+(function(){
+    const logged = localStorage.getItem("logged_admin");
+    if(!logged){
+        alert("Please login as admin first.");
+        window.location = "admin.html";
+    }
+})();
+
+// Logout function
+function logoutAdmin(){
+    localStorage.removeItem("logged_admin");
+    window.location = "admin.html";
+}
+</script>
+
+</body>
+</html>
