@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topnav">
+    <a href="index.html" class="logo">Retro Games Hub</a>
+    <nav>
+        <a href="login.html">User Login</a>
+        <a href="register.html">Register</a>
+        <a class="active" href="admin.html">Admin Login</a>
+    </nav>
+</header>
+
+<div class="form-container">
+
+    <h2>Admin Login</h2>
+
+    <input type="email" id="adminEmail" placeholder="Admin Email">
+    <input type="password" id="adminPass" placeholder="Password">
+
+    <button onclick="adminLogin()">Login</button>
+
+    <p id="formMsg" class="form-msg"></p>
+
+    <div class="extra-links">
+        <a href="admin-register.html">Create New Admin</a>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
