@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Games Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header class="topnav">
+    <a href="index.html" class="logo">Retro Games Hub</a>
+    <nav>
+        <a class="active" href="index.html">Home</a>
+        <a href="login.html">User Login</a>
+        <a href="register.html">Register</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <img src="hero.png" class="hero-img" alt="Hero Banner">
+    <h1 class="hero-title">Play Classic Retro Games</h1>
+    <p class="hero-sub">Explore thousands of legendary titles from NES, PS1, SEGA and more!</p>
+</section>
+
+<!-- Search -->
+<div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search games..." onkeyup="filterGames()">
+</div>
+
+<!-- Categories -->
+<div class="category-row">
+    <div class="cat">🎮 NES</div>
+    <div class="cat">🕹 Arcade</div>
+    <div class="cat">🐍 SEGA</div>
+    <div class="cat">💿 PS1</div>
+</div>
+
+<!-- Trending Games -->
+<section class="games-section">
+    <h2 class="section-title">Trending Games</h2>
+    <div id="gameList" class="game-list"></div>
+</section>
+
+<script src="script.js"></script>
+
+<script>
+/* Simple search filter */
+function filterGames() {
+    let q = document.getElementById("searchInput").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(c => {
+        let title = c.querySelector("h4").innerText.toLowerCase();
+        c.style.display = title.includes(q) ? "block" : "none";
+    });
+}
+</script>
+
+</body>
+</html>
