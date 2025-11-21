@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Details</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+  <div class="navbar">
+    <h2>Game Details</h2>
+    <div>
+      <a href="Index.html" class="admin-btn">Home</a>
+      <a href="admin.html" class="admin-btn">Dashboard</a>
+    </div>
+  </div>
+
+  <div class="admin-panel" id="gameDetails" style="max-width:700px;margin:24px auto;"></div>
+
+  <script src="script.js"></script>
+
+  <script>
+    function loadGameDetails() {
+      const params = new URLSearchParams(window.location.search);
+      const id = Number(params.get("id"));
+      const container = document.getElementById("gameDetails");
+
+      if (!id) {
+        container.innerHTML = "<p>Invalid game ID.</p>";
+        return;
+      }
+
+      const game = games.find(g => g.id === id);
+      if (!game) {
+        container.innerHTML = "<p>Game not found.</p>";
+        return;
+      }
+
+      const icon = categoryIcons[game.category] || "🎮";
+
+      container.innerHTML = `
+        <div style="text-align:center;">
+          <img src="${game.cover}" alt="${game.title}" style="width:300px;border-radius:10px;margin-bottom:15px;">
+        </div>
+
+        <h2 style="margin-bottom:4px;">${game.title}</h2>
+        <p style="color:#aaa;margin-top:0;">${icon} ${game.category} • ${game.year}</p>
+
+        <p style="margin-top:18px;line-height:1.6;">${game.description || "No description provided."}</p>
+
+        <a href="${game.file}" download="${game.title}.zip" onclick="incrementDownload(${game.id})">
+          <button style="margin-top:18px;padding:10px 16px;border-radius:6px;background:#333;color:#fff;border:none;">Download</button>
+        </a>
+
+        <div style="margin-top:14px;">
+          <button onclick="history.back()" style="background:#444;padding:8px 12px;border-radius:6px;border:none;color:#fff;">← Back</button>
+        </div>
+      `;
+    }
+
+    loadGameDetails();
+  </script>
+</body>
+</html>

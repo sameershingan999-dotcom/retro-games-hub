@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Accounts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+  <div class="navbar">
+    <h2>Admins</h2>
+    <div>
+      <a href="admin.html" class="admin-btn">Dashboard</a>
+      <a href="register.html" class="admin-btn">Add Admin</a>
+      <button onclick="logout()" class="admin-btn">Logout</button>
+    </div>
+  </div>
+
+  <div class="admin-panel">
+    <h3>All Admin Accounts</h3>
+    <p id="currentAdminInfo" style="color:#bbb;margin-bottom:10px;"></p>
+    <div id="adminsList" class="admins-list"></div>
+
+    <hr style="margin:18px 0;">
+    <h4>Create Admin (quick)</h4>
+    <div style="max-width:420px;">
+      <input type="email" id="quickEmail" placeholder="Email">
+      <input type="password" id="quickPassword" placeholder="Password">
+      <button onclick="quickCreateAdmin()">Create Admin</button>
+      <p id="quickMsg" class="msg"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', ()=> { renderAdmins(); });</script>
+</body>
+</html>

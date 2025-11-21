@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+  <div class="navbar">
+    <h2>Admin Dashboard</h2>
+    <div>
+      <a href="admins.html" class="admin-btn">Admins</a>
+      <a href="register.html" class="admin-btn">Add Admin</a>
+      <button onclick="logout()" class="admin-btn">Logout</button>
+    </div>
+  </div>
+
+  <div class="admin-panel">
+    <h3>Add New Game</h3>
+
+    <input type="text" id="gameTitle" placeholder="Game Title">
+    <input type="text" id="gameCategory" placeholder="Category (NES, SEGA, PS1, Arcade)">
+    <input type="number" id="gameYear" placeholder="Release Year">
+
+    <label>Cover Image</label>
+    <input type="file" id="coverFile" accept="image/*">
+
+    <label>Game File (zip/rom)</label>
+    <input type="file" id="gameFile" accept=".zip,.rar,.7z,.bin,.iso,.rom">
+
+    <textarea id="gameDescription" placeholder="Short description (optional)"></textarea>
+
+    <button onclick="addGame()">Upload Game</button>
+
+    <hr style="margin-top:20px;opacity:0.3;">
+    <h3>Manage Games</h3>
+
+    <div id="adminGameList"></div>
+  </div>
+
+  <!-- EDIT MODAL -->
+  <div id="editModal" class="edit-modal">
+    <div class="edit-content">
+      <h3>Edit Game</h3>
+
+      <input type="text" id="editTitle" placeholder="Game Title">
+      <input type="text" id="editCategory" placeholder="Category">
+      <input type="number" id="editYear" placeholder="Year">
+
+      <label>New Cover (optional)</label>
+      <input type="file" id="editCover" accept="image/*">
+
+      <label>New Game File (optional)</label>
+      <input type="file" id="editFile" accept=".zip,.rar,.7z,.bin,.iso,.rom">
+
+      <textarea id="editDescription" placeholder="Description"></textarea>
+
+      <div style="margin-top:10px;">
+        <button onclick="saveEdit()">Save</button>
+        <button class="close-btn" onclick="closeEdit()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
