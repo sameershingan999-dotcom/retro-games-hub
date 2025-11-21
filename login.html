@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topnav">
+    <a href="index.html" class="logo">Retro Games Hub</a>
+    <nav>
+        <a class="active" href="login.html">User Login</a>
+        <a href="register.html">Register</a>
+        <a href="admin.html">Admin Login</a>
+    </nav>
+</header>
+
+<div class="form-container">
+
+    <h2>User Login</h2>
+
+    <input type="email" id="userEmail" placeholder="Email">
+    <input type="password" id="userPass" placeholder="Password">
+
+    <button onclick="userLogin()">Login</button>
+
+    <p id="formMsg" class="form-msg"></p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
